@@ -43,12 +43,12 @@ export default {
 
             if (this.dataGraphic.length != 0) {
                 data = {
-                    labels: [this.$t('dashboard.admin.devices'), this.$t('dashboard.admin.courses'), this.$t('dashboard.admin.tasks')], //nombre de los datos del gráfico
+                    labels: [this.$t('dashboard.admin.devices'), this.$t('dashboard.admin.courses'), this.$t('dashboard.admin.companies'), this.$t('dashboard.admin.users')], //nombre de los datos del gráfico
                     datasets: [{
                         label: this.$t('quantity'), //nombre de la propiedad
-                        data: [this.dataGraphic.countDevices, this.dataGraphic.countCourses, this.dataGraphic.countTasks], //número que recuperamos de la api para mostrar en el gráfico (dato real que queremos mostrar)
-                        backgroundColor: ['rgba(255, 99, 132)', 'rgba(75, 192, 192)', 'rgba(153, 102, 255)'],
-                        borderColor: ['rgba(255, 99, 132)', 'rgba(75, 192, 192)', 'rgba(153, 102, 255)'],
+                        data: [this.dataGraphic.countDevices, this.dataGraphic.countCourses, this.dataGraphic.countCompanies, this.dataGraphic.countUsers], //número que recuperamos de la api para mostrar en el gráfico (dato real que queremos mostrar)
+                        backgroundColor: ['rgba(255, 99, 132)', 'rgba(75, 192, 192)', 'rgba(153, 102, 255)', 'rgb(54, 162, 235)'],
+                        borderColor: ['rgba(255, 99, 132)', 'rgba(75, 192, 192)', 'rgba(153, 102, 255)', 'rgb(54, 162, 235)'],
                         borderWidth: 1
                     }
                     ]
@@ -80,7 +80,7 @@ export default {
              * canvas hace referencia a la etiqueta y tipos de etiqueta donde se va a renderizar el gráfico
              */
             const chart = new Chart(canvas, {
-                type: 'doughnut', //tipo de gráfico que se va a mostrar
+                type: 'pie', //tipo de gráfico que se va a mostrar
                 data: data, //contiene los datos a representar en el gráfico y hace referéncia a la constante data
                 options: options //contiene opciones de configuración del gráfico y hace referéncia a la constante options
             });
