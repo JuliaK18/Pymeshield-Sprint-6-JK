@@ -299,8 +299,14 @@ Route::get('restaurar', [RestoreController::class, 'devices'])->name('restaurar'
 Route::post('restore/{id}', [RestoreController::class, 'restoreDevice'])->name('restaurar')->middleware('auth', 'check_access_admin');
 Route::get('restore/{id}', [RestoreController::class, 'getIdDevice'])->name('restaurar')->middleware('auth', 'check_access_admin');
 
+// Mapa 
+// La ruta /map crida a una funció anònima que torna la vista mapa, i s'anomena com a map mitjançant el mètode name().
+Route::get('/map', function () {
+    return view('mapa');
+})->name('map');
 
-//Mostrar Dispositivos
+
+// Mostrar Dispositivos
 Route::get('devices', function () {
     return view('listdevices');
 })->middleware('auth', 'check_access_admin');

@@ -291,4 +291,32 @@ class CourseController extends Controller
             return response()->json($data);
         }
     }
+
+    //Pujar imatges
+    public function storeImage(Request $request)
+{
+    $course = new Course;
+    $course->name = $request->name;
+    $course->description = $request->description;
+
+    $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+    
+    if($request->file('image')){
+        $image = $request->file('image');
+        $path = 'img/imatgescurs/';
+        $filename = time() . '.' . $image->getClientOriginalName();
+        $guardar = $request->file('image')->move($path, $filename);
+        $course->image = $path . $filename;
+    }
+
+    $course->course_id = $request->course_id;
+
+    $course->save();
+    
+    return redirect()->route('course.client.index');
+    //        return view('course.client.index', compact('cursos'));
+
+}
 }

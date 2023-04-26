@@ -16,6 +16,8 @@
             <ul>
                 <li><a href="tel:682849274">682849274</a></li>
                 <li><a href="{{ route('contacte') }}">info@pymeshield.com</a></li>
+                <li><a href="{{ route('map') }}">Localización y calendario 
+                </a></li>
             </ul>
         </div>
         <div>
